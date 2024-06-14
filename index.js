@@ -14,7 +14,7 @@ const corsOptions = {
   allowedHeaders: ["Content-Type"], // Allow only Content-Type header
 };
 
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(bodyParser.json());
 
 const AuthRouter = require("@routes/auth");
