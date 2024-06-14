@@ -9,7 +9,7 @@ const PORT = 3000;
 dotenv.config();
 
 const corsOptions = {
-  origin: "http://localhost:5173", // Replace with your React app's URL
+  origin: process.env.ORIGIN_URL, 
   methods: ["GET", "POST"], // Allow only GET and POST requests
   allowedHeaders: ["Content-Type"], // Allow only Content-Type header
 };
