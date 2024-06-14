@@ -2,9 +2,11 @@ require("module-alias/register");
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const dotenv = require("dotenv");
 
 const app = express();
 const PORT = 3000;
+dotenv.config();
 
 const corsOptions = {
   origin: "http://localhost:5173", // Replace with your React app's URL
