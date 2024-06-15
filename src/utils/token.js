@@ -10,6 +10,15 @@ const generateJWTToken = (user, expiresIn) => {
   return jwtToken;
 };
 
+const decodeJWTToken = (token) => {
+  try {
+    return jwt.verify(token, process.env.SECRET_KEY);
+  } catch (error) {
+    throw new Error("Invalid token");
+  }
+};
+
 module.exports = {
   generateJWTToken,
+  decodeJWTToken,
 };
