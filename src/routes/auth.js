@@ -19,7 +19,7 @@ router.post("/login", async (req, res) => {
     if (result.length === 0) {
       return res.status(200).json({
         user: null,
-        token: null,
+        token: "",
         error: "Invalid login credentials",
       });
     } else {
@@ -39,7 +39,11 @@ router.get("/authorize", async (req, res) => {
   const token = req.headers["authorization"].split("Bearer ")[1];
   try {
     const result = decodeJWTToken(token);
-    return res.status(200).json(result);
+    return res.status(200).json({
+      firstName: result.firstName,
+      lastName: result.lastName,
+      email: result.email,
+    });
   } catch (error) {
     return res.status(400).json("Invalid token");
   }
