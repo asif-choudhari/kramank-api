@@ -9,7 +9,7 @@ const PORT = 3000;
 dotenv.config();
 
 const corsOptions = {
-  origin: process.env.ORIGIN_URL, 
+  origin: process.env.ORIGIN_URL,
   methods: ["GET", "POST"], // Allow only GET and POST requests
   allowedHeaders: ["Content-Type"], // Allow only Content-Type header
 };
@@ -17,9 +17,14 @@ const corsOptions = {
 app.use(cors());
 app.use(bodyParser.json());
 
-const AuthRouter = require("@routes/auth");
+const authRouter = require("@routes/auth");
+const authMiddleware = require("@middlewares/authMiddleware");
+const adminBranchRouter = require("@routes/adminBranch");
 
-app.use("/auth", AuthRouter);
+app.use("/auth", authRouter);
+
+app.use(authMiddleware);
+app.use("/admin-branch", adminBranchRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port: ${PORT}`);

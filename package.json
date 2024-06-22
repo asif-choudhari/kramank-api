@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "nodemon index.js"
   },
   "author": "",
   "license": "ISC",
@@ -20,6 +20,7 @@
   "_moduleAliases": {
     "@config": "src/config",
     "@routes": "src/routes",
-    "@utils": "src/utils"
+    "@utils": "src/utils",
+    "@middlewares": "src/middlewares"
   }
 }

@@ -1,8 +1,7 @@
 const express = require("express");
 const pool = require("@config/db.config");
 const { createHash } = require("crypto");
-const { generateJWTToken } = require("@utils/token");
-const { decodeJWTToken } = require("../utils/token");
+const { generateJWTToken, decodeJWTToken } = require("@utils/token");
 
 const router = express.Router();
 
@@ -36,7 +35,14 @@ router.post("/login", async (req, res) => {
 });
 
 router.get("/authorize", async (req, res) => {
-  const token = req.headers["authorization"].split("Bearer ")[1];
+  const authHeader = req.headers["authorization"];
+
+  if (!authHeader) {
+    return res.status(401).json({ error: "No token provided" });
+  }
+
+  const token = authHeader.split(" ")[1];
+
   try {
     const result = decodeJWTToken(token);
     return res.status(200).json({
