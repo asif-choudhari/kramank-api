@@ -94,10 +94,9 @@ router.get("/get-branch-list/:companyId", async (req, res) => {
 
 router.post("/set-branch-admin", async (req, res) => {
   const { userId, branchId } = req.body;
-  console.log(userId, branchId);
   try {
     await pool.query("CALL setBranchAdmin(?, ?);", [userId, branchId]);
-    console.log("Success");
+
     return res.status(200).send();
   } catch (err) {
     console.error("Error executing query:", err);

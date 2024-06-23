@@ -20,11 +20,13 @@ app.use(bodyParser.json());
 const authRouter = require("@routes/auth");
 const authMiddleware = require("@middlewares/authMiddleware");
 const adminBranchRouter = require("@routes/adminBranch");
+const rasieQueryRouter = require("@routes/queries");
 
 app.use("/auth", authRouter);
 
 app.use(authMiddleware);
 app.use("/admin-branch", adminBranchRouter);
+app.use("/raise-query", rasieQueryRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port: ${PORT}`);
