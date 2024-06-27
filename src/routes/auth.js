@@ -8,7 +8,7 @@ const router = express.Router();
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
   const passwordHash = createHash("sha256").update(password).digest("base64");
-
+  console.log(passwordHash);
   try {
     const [[result]] = await pool.query("CALL checkUserCredentials(?, ?);", [
       email,

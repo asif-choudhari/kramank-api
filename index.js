@@ -21,12 +21,16 @@ const authRouter = require("@routes/auth");
 const authMiddleware = require("@middlewares/authMiddleware");
 const adminBranchRouter = require("@routes/adminBranch");
 const rasieQueryRouter = require("@routes/queries");
+const addBranchRouter = require("@routes/addBranch");
+const homeRouter = require("@routes/home");
 
 app.use("/auth", authRouter);
 
 app.use(authMiddleware);
 app.use("/admin-branch", adminBranchRouter);
 app.use("/raise-query", rasieQueryRouter);
+app.use("/add-branch", addBranchRouter);
+app.use("/home", homeRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port: ${PORT}`);
