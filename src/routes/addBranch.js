@@ -31,7 +31,7 @@ router.post("/", async (req, res) => {
       state,
     ]);
 
-    return res.status(200).send();
+    return res.status(204).send();
   } catch (err) {
     console.error("Error executing query:", err);
     res.status(500).send("Internal server error");
